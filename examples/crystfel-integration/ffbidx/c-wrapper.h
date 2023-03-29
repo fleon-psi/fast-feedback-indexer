@@ -1,3 +1,6 @@
+// Copyright (2019-2022) Paul Scherrer Institute
+// SPDX-License-Identifier: GPL-3.0-or-later
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -12,10 +15,13 @@ struct ffbidx_settings {
     unsigned max_spots; // maximum number of input spots
 };
 
+
 int allocate_fast_indexer(struct ffbidx_indexer* idx, struct ffbidx_settings *settings);
 void free_fast_indexer(struct ffbidx_indexer idx);
 int index_raw(struct ffbidx_indexer idx, float cell[9], float *x, float *y, float *z, unsigned nspots);
 int index_refined(struct ffbidx_indexer idx, float cell[9], float *x, float *y, float *z, unsigned nspots);
+
+int fast_feedback_crystfel(struct ffbidx_settings *settings, float cell[9], float *x, float *y, float *z, unsigned nspots);
 
 #ifdef __cplusplus
 } // extern "C"
